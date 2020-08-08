@@ -1,4 +1,7 @@
-.centrado{
-    text-align: center
-    
+.form-group {
+    max-width: 330px;
+}
+
+body {
+    background-color: #f5f5f5;
 }
