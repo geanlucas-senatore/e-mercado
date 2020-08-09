@@ -26,23 +26,26 @@
 
 <body>
     <center>
-        <form class="form-signin">
+        <form class="form-signin" method="get">
 
-            <h1 class=>Ingresar</h1>
+
+            <h2>Ingresar</h2>
             <h5>Ingresa usuario y contraseña para entrar</h5>
             <br>
             <div class="form-group">
-                <input type="email" class="form-control" id="" placeholder="e-mail" required autofocus>
+                <input type="email" name="email" id="email" class="form-control" placeholder="email" required autofocus>
             </div>
             <br>
             <div class="form-group">
-                <input type="password" class="form-control" id="" placeholder="contraseña">
+                <input type="password" id="contra" class="form-control" placeholder="contraseña" required autofocus>
             </div>
             <br>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="ingresar">
+                <a href="index.html" onclick="funcionamiento()" class="btn btn-primary">Ingresar</a>
             </div>
+            <div id="mostrar">
 
+            </div>
         </form>
     </center>
     <script src="js/init.js"></script>
