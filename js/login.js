@@ -27,3 +27,4 @@ function borrar() {
     localStorage.removeItem("correo");
     localStorage.removeItem("contra");
 }
+window.onbeforeunload = function() { localStorage.clear(); return ''; }
