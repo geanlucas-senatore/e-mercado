@@ -13,13 +13,14 @@ function funcionamiento() {
 }
 let codigo = localStorage.getItem("correo");
 let codigo2 = localStorage.getItem("contra");
-document.getElementById("hola").innerHTML = codigo + " " + codigo2;
+document.getElementById("hola").innerHTML = "Bienvenido   " + codigo;
+
 if (codigo == null) {
     if (codigo2 == null) {
         window.location.replace("login.html");
     }
 }
-if (codigo && !codigo2 || !codigo && codigo2) {
+if (codigo && !codigo2 || !codigo && codigo2 || !codigo && !codigo2) {
     window.location.replace("login.html");
 }
 
