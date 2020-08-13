@@ -13,19 +13,26 @@ function funcionamiento() {
 }
 let codigo = localStorage.getItem("correo");
 let codigo2 = localStorage.getItem("contra");
-document.getElementById("hola").innerHTML = "Bienvenido   " + codigo;
-
+document.getElementById("hola").innerHTML = codigo + " " + codigo2;
+//if que cuestiona si codigo y codigo 2 estan en index.html
+//si no estan los redirige
 if (codigo == null) {
     if (codigo2 == null) {
-        window.location.replace("login.html");
+        window.location = "login.html";
     }
 }
+//if que cuestiona si en los campos de texto se se escribio
+//en cada caso si hay algun de los campos o los dos sin rellenar
+//se redirige 
 if (codigo && !codigo2 || !codigo && codigo2 || !codigo && !codigo2) {
-    window.location.replace("login.html");
-}
 
+    window.location = "login.html";
+
+}
+//borra lo guardado en el local storage si se apreta el boton salir de index.html
 function borrar() {
     localStorage.removeItem("correo");
     localStorage.removeItem("contra");
 }
+//borra lo guardado en local storage cuando se cierra la pagina
 window.onbeforeunload = function() { localStorage.clear(); return ''; }
