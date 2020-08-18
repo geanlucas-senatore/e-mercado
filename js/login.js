@@ -13,7 +13,7 @@ function funcionamiento() {
 }
 let codigo = localStorage.getItem("correo");
 let codigo2 = localStorage.getItem("contra");
-document.getElementById("hola").innerHTML = codigo + " " + codigo2;
+document.getElementById("hola").innerHTML = "hola&nbsp" + codigo;
 //if que cuestiona si codigo y codigo 2 estan en index.html
 //si no estan los redirige
 if (codigo == null) {
@@ -34,5 +34,3 @@ function borrar() {
     localStorage.removeItem("correo");
     localStorage.removeItem("contra");
 }
-//borra lo guardado en local storage cuando se cierra la pagina
-window.onbeforeunload = function() { localStorage.clear(); return ''; }
