@@ -38,10 +38,25 @@
         </div>
         <div class="container">
             <div class="row">
+                <div class="col text-right">
+                    <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                        <label class="btn btn-light active" id="sortporpreciomin">
+                                <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-sort-amount-up mr-1"></i>precio
+                            </label>
+                        <label class="btn btn-light" id="sortporpreciomax">
+                                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>precio
+                            </label>
+                        <label class="btn btn-light" id="sortporventas">
+                                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
+                            </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="list-group" id="contenedor">
                 </div>
             </div>
-        </div>
+
     </main>
     <footer class="text-muted bg-light">
         <div class="container">
