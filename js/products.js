@@ -47,7 +47,7 @@ function mostrarproductos() {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(productos.soldCount) <= maxCount))) {
 
             htmlContentToAppend += `
-            <a href="category-info.html" class="list-group-item list-group-item-action">
+            <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + productos.imgSrc + `" alt="` + productos.description + `" class="img-thumbnail">
