@@ -39,21 +39,27 @@ function showImages(array) {
 function mostrarfiltros(array) {
 
     let htmlContentToAppend = "";
+    let estrellas = '<span class="fa fa-star checked"></span>';
     for (let i = 0; i < array.length; i++) {
         let productos = array[i];
 
 
-
         htmlContentToAppend += `
-                <p>` + productos.description + ` <p>
-                <p>` + productos.user + `</p>
-                <p>` + productos.dateTime + `</p>
+        <div class="card" style="width: 50rem;">
+        <div class="card-body">
+        <h5 class="card-title">Calificacion: ` + estrellas.repeat(productos.score) + ` de 5</h5>
+            <h5 class="card-title">` + productos.user + `</h5>
+            <p class="card-text">` + productos.description + `</p>
+            <small>posteado el: ` + productos.dateTime + `</small>
+        </div>
+    </div>
+    <br>
             `
-
 
         document.getElementById("comentarios").innerHTML = htmlContentToAppend;
     }
 }
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
