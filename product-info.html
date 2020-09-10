@@ -15,6 +15,35 @@
     <link href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        .puntuacion {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+        .puntuacion input {
+            position: absolute;
+            top: -100px;
+        }
+        
+        .puntuacion label {
+            float: right;
+            color: #c1b8b8;
+            font-size: 30px;
+        }
+        
+        .puntuacion label:hover,
+        .puntuacion label:hover~label,
+        .puntuacion input:checked~label {
+            color: orange;
+        }
+        
+        span {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: 400;
+            color: blue;
+        }
+        
         .checked {
             color: orange;
         }
@@ -102,10 +131,50 @@
 
     <center>
         <div id="comentarios"></div>
+        <div id="dondevaelcomentario"></div>
+
+
+
+        <h2><span class="badge badge-info">Escribe un comentario</span></h2>
+
+
+
+
+        <div id="saludo" class="puntuacion">
+            <input id="radio1" type="radio" name="estrellas" value="5" onclick="localStorage.setItem('numero',5)">
+            <!--
+            --><label for="radio1">★</label>
+            <!--
+            --><input id="radio2" type="radio" name="estrellas" value="4" onclick="localStorage.setItem('numero',4)">
+            <!--
+            --><label for="radio2">★</label>
+            <!--
+            --><input id="radio3" type="radio" name="estrellas" value="3" onclick="localStorage.setItem('numero',3)">
+            <!--
+            --><label for="radio3">★</label>
+            <!--
+            --><input id="radio4" type="radio" name="estrellas" value="2" onclick="localStorage.setItem('numero',2)">
+            <!--
+            --><label for="radio4">★</label>
+            <!--
+            --><input id="radio5" type="radio" name="estrellas" value="1" onclick="localStorage.setItem('numero',1)">
+            <!--
+            --><label for="radio5">★</label><br>
+
+
+        </div>
+
+        <textarea id="comentario" style="max-width: 600px;" class="form-control" name="" id="" rows="3"></textarea>
+        <button onclick="recargar()" class="btn btn-primary">Enviar</button><br><br>
+
+
+        <div id="poner">
+
+
+
+        </div>
 
     </center>
-
-
 
     <footer class="text-muted">
         <div class="container">
@@ -129,6 +198,7 @@
     <script src="js/init.js"></script>
     <script src="js/product-info.js"></script>
     <script src="js/login.js"></script>
+    <!--<script src="js/products.js"></script>-->
 </body>
 
 </html>
