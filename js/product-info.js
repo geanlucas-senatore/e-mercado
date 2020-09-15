@@ -1,6 +1,7 @@
 var category = {};
 var coments = [];
 var products = [];
+var related = [];
 
 function showImagesGallery(array) {
 
@@ -110,31 +111,7 @@ function recargar() {
     localStorage.removeItem("numero");
 }
 
-function mostrarRelacionados() {
 
-    contenido = "";
-    for (i = 1; i < products.length; i = i + 2) {
-        modelos = products[i];
-
-        contenido += `
-
-        <div class="card" style="width: 18rem;">
-            <img src=` + modelos.imgSrc + ` class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">` + modelos.name + `</h5>
-                <p class="card-text">` + modelos.description + `</p>
-                <a href="product-info.html" class="btn btn-primary">Ver</a>
-            </div>
-        </div>
-
-        `
-        document.getElementById("poner").innerHTML = contenido;
-
-    }
-
-
-
-}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -156,8 +133,44 @@ document.addEventListener("DOMContentLoaded", function(e) {
             showImagesGallery(category.images);
             showImages(category.images);
         }
+        getJSONData(PRODUCTS_URL).then(function(resultado) {
+            if (resultado.status === "ok") {
+
+                related = resultado.data;
+
+
+                let contentTo = "";
+
+                category.relatedProducts.forEach(function(elemento, indice) {
+
+
+                    contentTo += `
+                    
+                    <div class="col-md-4">
+                    <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                    <img class="bd-placeholder-img card-img-top" src=` + related[elemento].imgSrc + `>
+                    <hr>
+                    <h3 class="m-3">` + related[elemento].name + `</h3>
+                    <div class="card-body">
+                        <p class="card-text">` + related[elemento].description + `</p>
+                        <button class="btn btn-primary">Ver</button>
+                    </div>
+                    </a>
+                    </div>
+       
+
+
+                    `
+
+                    document.getElementById("poner").innerHTML = contentTo;
+
+                });
+
+            }
+        });
     });
 });
+//${related[elemento].name}
 document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
@@ -167,18 +180,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
             mostrarfiltros(coments);
 
-
-        }
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function(e) {
-    getJSONData(PRODUCTS_URL).then(function(resultObj) {
-        if (resultObj.status === "ok") {
-            products = resultObj.data;
-
-
-            mostrarRelacionados(products);
 
         }
     });
