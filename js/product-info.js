@@ -30,11 +30,12 @@ function showImages(array) {
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-                <img src="` + imageSrc + `" alt="">
-            
+                <div class="carousel-item">
+                <img src="` + imageSrc + `" class="d-block w-100" alt=""> 
+                </div>
         `
 
-        document.getElementById("product").innerHTML = htmlContentToAppend;
+        document.getElementById("product2").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -124,12 +125,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
             let nombreauto = document.getElementById("nombre");
             let descriauto = document.getElementById("descri");
             let costoauto = document.getElementById("costo");
+            let imagenAuto = document.getElementById("product");
 
             nombreauto.innerHTML = category.name;
             descriauto.innerHTML = category.description;
             costoauto.innerHTML = "Precio:  " + category.cost + category.currency + ".  Cantidad de vendidos en 2020:  " + category.soldCount + "  vehiculos.";
-
-            //Muestro las imagenes en forma de galería
+            imagenAuto.innerHTML = `<img src="` + category.images[0] + `" class="d-block w-100" alt="">`
+                //Muestro las imagenes en forma de galería
             showImagesGallery(category.images);
             showImages(category.images);
         }
