@@ -50,7 +50,7 @@ function mostrarfiltros(array) {
         htmlContentToAppend += `
         <div class="card" style="width: 50rem;">
         <div class="card-body">
-        <h5 class="card-title">Calificacion: ` + estrellas.repeat(productos.score) + ` de 5</h5>
+        <h5 class="card-title">Calificacion: ` + estrellas.repeat(productos.score) + `</h5>
             <h5 class="card-title">` + productos.user + `</h5>
             <p class="card-text">` + productos.description + `</p>
             <small>posteado el: ` + productos.dateTime + `</small>

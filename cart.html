@@ -27,6 +27,10 @@
                 font-size: 3.5rem;
             }
         }
+        
+        img {
+            width: 100px;
+        }
     </style>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
@@ -50,14 +54,23 @@
             </div>
         </div>
     </nav>
-    <div class="container p-5">
-        <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-            <h4 class="alert-heading">¡A trabajar! :)</h4>
-            <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-            <hr>
-            <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-        </div>
+
+    <div class="container">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark ">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio Unit.</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Costo total</th>
+                </tr>
+            </thead>
+            <tbody id='lista'>
+            </tbody>
+        </table>
     </div>
+
     <div id="spinner-wrapper">
         <div class="lds-ring">
             <div></div>
