@@ -3,7 +3,6 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
 
-
 });
 
 function funcionamiento() {
@@ -13,7 +12,7 @@ function funcionamiento() {
 }
 let codigo = localStorage.getItem("correo");
 let codigo2 = localStorage.getItem("contra");
-document.getElementById("hola").innerHTML = "hola&nbsp" + codigo;
+document.getElementById("hola").innerHTML = codigo;
 //if que cuestiona si codigo y codigo 2 estan en index.html
 //si no estan los redirige
 if (codigo == null) {

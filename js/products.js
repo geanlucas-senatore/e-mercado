@@ -6,6 +6,7 @@ currentArray = [];
 currentcomordenarlos = undefined;
 minCount = undefined;
 maxCount = undefined;
+let informa = [];
 
 function ordenar(criteria, array) {
     let result = [];
@@ -162,5 +163,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
 
         mostrarfiltros();
+    });
+    getJSONData(CART_INFO2_URL).then(function(resultObj) {
+        if (resultObj.status === "ok") {
+            informa = resultObj.data;
+
+            document.getElementById("alerta").innerHTML = informa["articles"].length;
+        }
     });
 });

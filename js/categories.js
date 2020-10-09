@@ -5,6 +5,7 @@ var currentCategoriesArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
+let informa = [];
 
 function sortCategories(criteria, array) {
     let result = [];
@@ -87,7 +88,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
             sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
+    getJSONData(CART_INFO2_URL).then(function(resultObj) {
+        if (resultObj.status === "ok") {
+            informa = resultObj.data;
 
+            document.getElementById("alerta").innerHTML = informa["articles"].length;
+        }
+    });
     document.getElementById("sortAsc").addEventListener("click", function() {
         sortAndShowCategories(ORDER_ASC_BY_NAME);
     });

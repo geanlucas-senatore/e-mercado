@@ -15,6 +15,7 @@ function mostrar(array) {
 
         //preciototalproducto = producto.precio * producto.cantidad;
         if (productos.currency === "USD") {
+
             listaProductos += `
             <tr>
                 <td><img src=${productos.src}></td>
@@ -25,6 +26,7 @@ function mostrar(array) {
             </tr>
             `;
         } else {
+
             listaProductos += `
             <tr>
                 <td><img src=${productos.src}></td>
@@ -36,6 +38,7 @@ function mostrar(array) {
             
             `;
         }
+
 
     };
 
@@ -144,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
             mostrar(informa["articles"]);
 
+            document.getElementById("alerta").innerHTML = informa["articles"].length;
         }
     });
 
