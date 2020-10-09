@@ -78,47 +78,59 @@
         <div class="text-center p-4">
             <h3>Metodo de envio</h3>
         </div>
-        <label for="nombre">Nombre</label>
-        <input type="text" class="form-control" id="nombre">
-        <label for="dir">Dirección</label>
-        <input type="text" class="form-control" id="dir">
-        <label for="correo">Correo</label>
-        <input type="text" class="form-control" id="correo">
+        <form method="POST">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre">
+            <label for="dir">Dirección</label>
+            <input type="text" class="form-control" id="dir">
+            <label for="correo">Correo</label>
+            <input type="text" class="form-control" id="correo">
 
-        <div class="d-block my-3">
-            <div class="custom-control custom-radio">
-                <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="goldradio">Premium</label>
+            <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                    <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" required="">
+                    <label class="custom-control-label" for="goldradio">Premium</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
+                    <label class="custom-control-label" for="premiumradio">Express</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+                    <label class="custom-control-label" for="standardradio">Estandar</label>
+                </div>
+                <div class="row">
+                    <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Ver condiciones</button>
+                </div>
             </div>
-            <div class="custom-control custom-radio">
-                <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="premiumradio">Express</label>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <h4>Subtotal: <span id="cuenta"></span>USD</h4>
+                    </li>
+                </ol>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <h4>cuota por tipo de envio:<span id="cuenta2"></span>USD</h4>
+                    </li>
+                </ol>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <h4>Total:<span id="total"></span>USD</h4>
+                    </li>
+                </ol>
+            </nav>
+            <hr>
+            <div class="text-center p-4">
+
+                <button type="button" class="m-1 btn btn-primary" data-toggle="modal" data-target="#contidionsModal2">Elegir tipo de pago</button>
+
             </div>
-            <div class="custom-control custom-radio">
-                <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="standardradio">Estandar</label>
-            </div>
-            <div class="row">
-                <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Ver condiciones</button>
-            </div>
-        </div>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <h4>Subtotal: <span id="cuenta"></span>USD</h4>
-                </li>
-            </ol>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <h4>cuota por tipo de envio:<span id="cuenta2"></span>USD</h4>
-                </li>
-            </ol>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <h4>Total:<span id="total"></span>USD</h4>
-                </li>
-            </ol>
-        </nav>
+
+
+
+            <input type="submit" class="btn btn-primary" value="Comprar">
+        </form>
         <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -143,6 +155,50 @@
                             <div class="row">
                                 <h5 class="text-secondary">Estandar (12-15 días)</h5>
                                 <p class="muted text-justify">Tiene un costo del 5% del subtotal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal2">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tipos de pago</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="d-block my-3">
+                                    <div class="row">
+                                        <div class="custom-control custom-radio">
+                                            <input id="tarjetacredito" name="publicationType" type="radio" class="custom-control-input" required="">
+                                            <label class="custom-control-label" for="tarjetacredito">Tarjeta de credito</label><br>
+                                            <hr>
+                                            <label for="credito">Numero de cuenta </label>
+                                            <input type="text" class="form form-control" id="credito"><br>
+                                            <label for="vencimiento">Vencimiento</label>
+                                            <input id="vencimiento" type="text" class="form form-control"><br>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="custom-control custom-radio">
+                                            <input id="cuentabancaria" name="publicationType" type="radio" class="custom-control-input" required="">
+                                            <label class="custom-control-label" for="cuentabancaria">Cuenta Bancaria</label>
+                                            <hr>
+                                            <label for="cuentabanco">Numero de cuenta</label>
+                                            <input type="text" id="cuentabanco" class="form form-control">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
