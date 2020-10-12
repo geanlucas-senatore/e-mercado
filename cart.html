@@ -78,13 +78,13 @@
         <div class="text-center p-4">
             <h3>Metodo de envio</h3>
         </div>
-        <form method="POST">
+        <form id="form" method="POST">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre">
+            <input type="text" class="form-control" id="nombre" required="">
             <label for="dir">Dirección</label>
-            <input type="text" class="form-control" id="dir">
+            <input type="text" class="form-control" id="dir" required="">
             <label for="correo">Correo</label>
-            <input type="text" class="form-control" id="correo">
+            <input type="email" class="form-control" id="correo" required="">
 
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
@@ -122,93 +122,94 @@
             </nav>
             <hr>
             <div class="text-center p-4">
-
-                <button type="button" class="m-1 btn btn-primary" data-toggle="modal" data-target="#contidionsModal2">Elegir tipo de pago</button>
-
+                <h3><span id="textoelegir" class="badge badge-secondary"></span></h3>
+                <div id="elegirPago">
+                    <button type="button" class="m-1 btn btn-primary" data-toggle="modal" data-target="#contidionsModal2">Elegir tipo de pago</button>
+                </div>
             </div>
 
 
 
             <input type="submit" class="btn btn-primary" value="Comprar">
-        </form>
-        <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Condiciones de publicación</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Condiciones de publicación</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <h5 class="text-warning">Premium (2-5 días)</h5>
-                                <p class="muted text-justify">Tiene un costo del 15% del subtotal</p>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <h5 class="text-primary">Express (5-8 días)</h5>
-                                <p class="muted text-justify">Tiene un costo del 7% del subtotal</p>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <h5 class="text-secondary">Estandar (12-15 días)</h5>
-                                <p class="muted text-justify">Tiene un costo del 5% del subtotal</p>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <h5 class="text-warning">Premium (2-5 días)</h5>
+                                    <p class="muted text-justify">Tiene un costo del 15% del subtotal</p>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <h5 class="text-primary">Express (5-8 días)</h5>
+                                    <p class="muted text-justify">Tiene un costo del 7% del subtotal</p>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <h5 class="text-secondary">Estandar (12-15 días)</h5>
+                                    <p class="muted text-justify">Tiene un costo del 5% del subtotal</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal2">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Tipos de pago</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal2">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Tipos de pago</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="d-block my-3">
-                                    <div class="row">
-                                        <div class="custom-control custom-radio">
-                                            <input id="tarjetacredito" name="publicationType" type="radio" class="custom-control-input" required="">
-                                            <label class="custom-control-label" for="tarjetacredito">Tarjeta de credito</label><br>
-                                            <hr>
-                                            <label for="credito">Numero de cuenta </label>
-                                            <input type="text" class="form form-control" id="credito"><br>
-                                            <label for="vencimiento">Vencimiento</label>
-                                            <input id="vencimiento" type="text" class="form form-control"><br>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="d-block my-3">
+                                        <div class="row">
+                                            <div class="custom-control custom-radio">
+                                                <input id="tarjetacredito" name="publicationType" type="radio" class="custom-control-input" required="">
+                                                <label class="custom-control-label" for="tarjetacredito">Tarjeta de credito</label><br>
+                                                <hr>
+                                                <label for="credito">Numero de cuenta </label>
+                                                <input type="text" class="form form-control" id="credito"><br>
+                                                <label for="vencimiento">Vencimiento</label>
+                                                <input id="vencimiento" type="text" class="form form-control"><br>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="custom-control custom-radio">
-                                            <input id="cuentabancaria" name="publicationType" type="radio" class="custom-control-input" required="">
-                                            <label class="custom-control-label" for="cuentabancaria">Cuenta Bancaria</label>
-                                            <hr>
-                                            <label for="cuentabanco">Numero de cuenta</label>
-                                            <input type="text" id="cuentabanco" class="form form-control">
+                                        <hr>
+                                        <div class="row">
+                                            <div class="custom-control custom-radio">
+                                                <input id="cuentabancaria" name="publicationType" type="radio" class="custom-control-input" required="">
+                                                <label class="custom-control-label" for="cuentabancaria">Cuenta Bancaria</label>
+                                                <hr>
+                                                <label for="cuentabanco">Numero de cuenta</label>
+                                                <input type="text" id="cuentabanco" class="form form-control">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </form>
         <div id="spinner-wrapper">
             <div class="lds-ring">
                 <div></div>

@@ -137,6 +137,41 @@ function calculoTotal() {
     tomarTotal.innerHTML = tomarCuentas;
 }
 
+document.getElementById("tarjetacredito").addEventListener("change", function() {
+
+    let barra = document.getElementById("elegirPago");
+    let textoCredito = document.getElementById("textoelegir");
+    textoCredito.innerHTML = "Elegiste pagar con tarjeta de credito";
+    barra.innerHTML = `<button type="button" class="m-1 btn btn-primary" data-toggle="modal" data-target="#contidionsModal2">Cambiar metodo de pago</button>`;
+
+});
+document.getElementById("cuentabancaria").addEventListener("change", function() {
+
+    let barra = document.getElementById("elegirPago");
+    let textoCredito = document.getElementById("textoelegir");
+    textoCredito.innerHTML = "Elegiste pagar con cuenta bancaria";
+    barra.innerHTML = `<button type="button" class="m-1 btn btn-primary" data-toggle="modal" data-target="#contidionsModal2">Cambiar metodo de pago</button>`;
+
+});
+
+form.onsubmit = function(evento) {
+
+    evento.preventDefault();
+
+    if (document.getElementById("textoelegir").innerHTML === "Elegiste pagar con tarjeta de credito") {
+
+        window.location = "cart.html";
+
+    } else if (document.getElementById("textoelegir").innerHTML === "Elegiste pagar con cuenta bancaria") {
+
+        window.location = "cart.html";
+
+    } else {
+        alert("Debes elegir forma de pago");
+    }
+
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
