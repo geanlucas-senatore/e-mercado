@@ -5,18 +5,20 @@ let numero = 0;
 
 function mostrar(array) {
     listaProductos = '';
+    let tomarArticulos = 0;
 
 
     for (let i = 0; i < array.length; i++) {
         let productos = array[i];
         let indice = i;
+
         numero = productos.count;
         let precioCantidad = productos.unitCost * numero;
 
 
         //preciototalproducto = producto.precio * producto.cantidad;
         if (productos.currency === "USD") {
-
+            tomarArticulos += precioCantidad;
             listaProductos += `
             <tr>
                 <td><img src=${productos.src}></td>
@@ -28,7 +30,7 @@ function mostrar(array) {
             </tr>
             `;
         } else {
-
+            tomarArticulos += precioCantidad / 40;
             listaProductos += `
             <tr>
                 <td><img src=${productos.src}></td>
@@ -62,7 +64,7 @@ function mostrar(array) {
 
     //listaProductos += `<td></td>`;
     document.getElementById("lista").innerHTML = listaProductos;
-    mostrarSubtotal();
+    document.getElementById("cuenta").innerHTML = tomarArticulos;
     document.getElementById("cuenta2").innerHTML = 0;
     document.getElementById("total").innerHTML = 0;
 
@@ -91,6 +93,7 @@ function mostrar(array) {
             mostrarSubtotal();
         }
     });
+
 
 
     document.getElementById("goldradio").addEventListener("change", function() {
@@ -124,7 +127,6 @@ function borrarTabla(numeroIndice) {
 
     informa["articles"].splice(numeroIndice, 1);
     mostrar(informa["articles"]);
-
 }
 
 function mostrarSubtotal() {
