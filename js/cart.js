@@ -9,6 +9,7 @@ function mostrar(array) {
 
     for (let i = 0; i < array.length; i++) {
         let productos = array[i];
+        let indice = i;
         numero = productos.count;
         let precioCantidad = productos.unitCost * numero;
 
@@ -23,6 +24,7 @@ function mostrar(array) {
                 <td>${productos.unitCost}USD</td>
                 <td><input type="number" class="form-control" id="contador" placeholder="" value=${numero} min="0"></td>
                 <td id="cambiar">${precioCantidad}USD</td>
+                <td><button class="btn btn-danger" onclick="borrarTabla(${indice})">Borrar</button></td>
             </tr>
             `;
         } else {
@@ -34,6 +36,7 @@ function mostrar(array) {
                 <td>USD${productos.unitCost/40}</td>
                 <td><input type="number" class="form-control" id="contador2" placeholder="" value=${numero} min="0"></td>
                 <td id="cambiar2">${precioCantidad/40}USD</td>
+                <td><button class="btn btn-danger" onclick="borrarTabla(${indice})">Borrar</button></td>
             </tr>
             
             `;
@@ -90,7 +93,6 @@ function mostrar(array) {
     });
 
 
-
     document.getElementById("goldradio").addEventListener("change", function() {
         let precio = 0;
         precio += parseFloat(document.getElementById("cuenta").innerHTML);
@@ -114,6 +116,14 @@ function mostrar(array) {
     });
 
 
+
+}
+
+
+function borrarTabla(numeroIndice) {
+
+    informa["articles"].splice(numeroIndice, 1);
+    mostrar(informa["articles"]);
 
 }
 
@@ -171,6 +181,8 @@ form.onsubmit = function(evento) {
     }
 
 }
+
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
