@@ -5,7 +5,6 @@ let numero = 0;
 
 function mostrar(array) {
     listaProductos = '';
-    let tomarArticulos = 0;
 
 
     for (let i = 0; i < array.length; i++) {
@@ -18,25 +17,24 @@ function mostrar(array) {
 
         //preciototalproducto = producto.precio * producto.cantidad;
         if (productos.currency === "USD") {
-            tomarArticulos += precioCantidad;
             listaProductos += `
             <tr>
                 <td><img src=${productos.src}></td>
                 <td>${productos.name}</td>
-                <td>${productos.unitCost}USD</td>
-                <td><input type="number" class="form-control" id="contador" placeholder="" value=${numero} min="0"></td>
+                <td id="costoAuto">${productos.unitCost}USD</td>
+                <td><input type="number" class="form-control" id="contador" onchange="cantidadAuto()" placeholder="" value=${numero} min="0"></td>
                 <td id="cambiar">${precioCantidad}USD</td>
                 <td><button class="btn btn-danger" onclick="borrarTabla(${indice})">Borrar</button></td>
             </tr>
             `;
         } else {
-            tomarArticulos += precioCantidad / 40;
+
             listaProductos += `
             <tr>
                 <td><img src=${productos.src}></td>
                 <td>${productos.name}</td>
-                <td>USD${productos.unitCost/40}</td>
-                <td><input type="number" class="form-control" id="contador2" placeholder="" value=${numero} min="0"></td>
+                <td id="costoPino">${productos.unitCost/40}USD</td>
+                <td><input type="number" class="form-control" id="contador2" onchange="cantidadPino()" placeholder="" value=${numero} min="0"></td>
                 <td id="cambiar2">${precioCantidad/40}USD</td>
                 <td><button class="btn btn-danger" onclick="borrarTabla(${indice})">Borrar</button></td>
             </tr>
@@ -64,35 +62,10 @@ function mostrar(array) {
 
     //listaProductos += `<td></td>`;
     document.getElementById("lista").innerHTML = listaProductos;
-    document.getElementById("cuenta").innerHTML = tomarArticulos;
+    document.getElementById("cuenta").innerHTML = ver();
     document.getElementById("cuenta2").innerHTML = 0;
     document.getElementById("total").innerHTML = 0;
 
-    document.getElementById("contador").addEventListener("change", function() {
-        for (i = 0; i < array.length; i++) {
-            toma1 = array[1];
-
-            numero = this.value;
-
-            precioCantidad = toma1.unitCost * numero;
-
-            document.getElementById("cambiar").innerHTML = precioCantidad + "USD";
-
-            mostrarSubtotal();
-        }
-    });
-
-    document.getElementById("contador2").addEventListener("change", function() {
-        for (i = 0; i < array.length; i++) {
-            toma2 = array[0];
-            numero = this.value;
-
-            precioCantidad2 = (toma2.unitCost / 40) * numero;
-
-            document.getElementById("cambiar2").innerHTML = precioCantidad2 + "USD";
-            mostrarSubtotal();
-        }
-    });
 
 
 
@@ -127,18 +100,9 @@ function borrarTabla(numeroIndice) {
 
     informa["articles"].splice(numeroIndice, 1);
     mostrar(informa["articles"]);
-}
-
-function mostrarSubtotal() {
-
-    let tomarArticulos = 0;
-    tomarArticulos += parseFloat(document.getElementById("cambiar").innerHTML);
-    tomarArticulos += parseFloat(document.getElementById("cambiar2").innerHTML);
-    let tomarID = document.getElementById("cuenta");
-    tomarID.innerHTML = tomarArticulos;
-
 
 }
+
 
 function calculoTotal() {
 
@@ -184,7 +148,63 @@ form.onsubmit = function(evento) {
 
 }
 
+function cantidadAuto() {
 
+    let dato = parseFloat(document.getElementById("costoAuto").innerHTML);
+    numero = document.getElementById("contador").value;
+    let cuenta = dato * numero;
+    document.getElementById("cambiar").innerHTML = cuenta + "USD";
+    ver();
+
+}
+
+function cantidadPino() {
+
+    let dato = parseFloat(document.getElementById("costoPino").innerHTML);
+
+    numero = document.getElementById("contador2").value;
+    let cuenta = dato * numero;
+    document.getElementById("cambiar2").innerHTML = cuenta + "USD";
+    ver();
+
+
+
+}
+
+
+function ver() {
+
+
+
+    let precioAuto = parseFloat(document.getElementById("cambiar2").innerHTML);
+    let preciopino = parseFloat(document.getElementById("cambiar").innerHTML);
+    let suma = precioAuto + preciopino;
+
+    return document.getElementById("cuenta").innerHTML = suma;
+
+}
+/*document.getElementById("contador").addEventListener("change", function() {
+
+    let dato = parseFloat(document.getElementById("costoAuto").innerHTML);
+    let pino = parseFloat(document.getElementById("cambiar2").innerHTML);
+    numero = this.value;
+    let cuenta = dato * numero;
+    document.getElementById("cambiar").innerHTML = cuenta + "USD";
+
+    document.getElementById("cuenta").innerHTML = pino + cuenta;
+
+});
+
+document.getElementById("contador2").addEventListener("change", function() {
+    let dato2 = parseFloat(document.getElementById("costoPino").innerHTML);
+    let auto = parseFloat(document.getElementById("cambiar").innerHTML);
+    numero2 = this.value;
+    let cuenta2 = dato2 * numero2;
+    document.getElementById("cambiar2").innerHTML = cuenta2 + "USD";
+    document.getElementById("cuenta").innerHTML = cuenta2 + auto;
+
+});
+*/
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
