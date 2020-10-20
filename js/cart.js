@@ -5,7 +5,7 @@ let numero = 0;
 
 function mostrar(array) {
     listaProductos = '';
-
+    let tomarArticulos = 0;
 
     for (let i = 0; i < array.length; i++) {
         let productos = array[i];
@@ -17,6 +17,7 @@ function mostrar(array) {
 
         //preciototalproducto = producto.precio * producto.cantidad;
         if (productos.currency === "USD") {
+            tomarArticulos += precioCantidad;
             listaProductos += `
             <tr>
                 <td><img src=${productos.src}></td>
@@ -28,7 +29,7 @@ function mostrar(array) {
             </tr>
             `;
         } else {
-
+            tomarArticulos += precioCantidad / 40;
             listaProductos += `
             <tr>
                 <td><img src=${productos.src}></td>
@@ -62,7 +63,7 @@ function mostrar(array) {
 
     //listaProductos += `<td></td>`;
     document.getElementById("lista").innerHTML = listaProductos;
-    document.getElementById("cuenta").innerHTML = ver();
+    document.getElementById("cuenta").innerHTML = tomarArticulos;
     document.getElementById("cuenta2").innerHTML = 0;
     document.getElementById("total").innerHTML = 0;
 
@@ -155,7 +156,6 @@ function cantidadAuto() {
     let cuenta = dato * numero;
     document.getElementById("cambiar").innerHTML = cuenta + "USD";
     ver();
-
 }
 
 function cantidadPino() {
@@ -168,7 +168,6 @@ function cantidadPino() {
     ver();
 
 
-
 }
 
 
@@ -176,35 +175,14 @@ function ver() {
 
 
 
-    let precioAuto = parseFloat(document.getElementById("cambiar2").innerHTML);
+    let precioauto = parseFloat(document.getElementById("cambiar2").innerHTML);
     let preciopino = parseFloat(document.getElementById("cambiar").innerHTML);
-    let suma = precioAuto + preciopino;
+    let suma = precioauto + preciopino;
 
     return document.getElementById("cuenta").innerHTML = suma;
 
 }
-/*document.getElementById("contador").addEventListener("change", function() {
 
-    let dato = parseFloat(document.getElementById("costoAuto").innerHTML);
-    let pino = parseFloat(document.getElementById("cambiar2").innerHTML);
-    numero = this.value;
-    let cuenta = dato * numero;
-    document.getElementById("cambiar").innerHTML = cuenta + "USD";
-
-    document.getElementById("cuenta").innerHTML = pino + cuenta;
-
-});
-
-document.getElementById("contador2").addEventListener("change", function() {
-    let dato2 = parseFloat(document.getElementById("costoPino").innerHTML);
-    let auto = parseFloat(document.getElementById("cambiar").innerHTML);
-    numero2 = this.value;
-    let cuenta2 = dato2 * numero2;
-    document.getElementById("cambiar2").innerHTML = cuenta2 + "USD";
-    document.getElementById("cuenta").innerHTML = cuenta2 + auto;
-
-});
-*/
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
