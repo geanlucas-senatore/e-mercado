@@ -15,7 +15,6 @@ function mostrar(array) {
         let precioCantidad = productos.unitCost * numero;
 
 
-        //preciototalproducto = producto.precio * producto.cantidad;
         if (productos.currency === "USD") {
             tomarArticulos += precioCantidad;
             listaProductos += `
@@ -47,21 +46,6 @@ function mostrar(array) {
     };
 
 
-    //precio total de los articulos
-    /*for (i = 0; i < array.length; i++) {
-        let producto = array[i];
-        if (producto.currency === "USD") {
-            let precioCantidad = producto.unitCost * producto.count;
-            listaPrueba += precioCantidad;
-        } else {
-            let precioCantidad = (producto.unitCost / 40) * producto.count;
-            listaPrueba += precioCantidad;
-        }
-
-    };
-*/
-
-    //listaProductos += `<td></td>`;
     document.getElementById("lista").innerHTML = listaProductos;
     document.getElementById("cuenta").innerHTML = tomarArticulos;
     document.getElementById("cuenta2").innerHTML = 0;
@@ -69,7 +53,7 @@ function mostrar(array) {
 
 
 
-
+    //eleccion de tipo de envio
     document.getElementById("goldradio").addEventListener("change", function() {
         let precio = 0;
         precio += parseFloat(document.getElementById("cuenta").innerHTML);
@@ -96,7 +80,7 @@ function mostrar(array) {
 
 }
 
-
+//borrar tabla
 function borrarTabla(numeroIndice) {
 
     informa["articles"].splice(numeroIndice, 1);
@@ -104,7 +88,7 @@ function borrarTabla(numeroIndice) {
 
 }
 
-
+//calculo de subtotal y costo de envio
 function calculoTotal() {
 
     let tomarCuentas = 0;
@@ -113,7 +97,7 @@ function calculoTotal() {
     tomarCuentas += parseFloat(document.getElementById("cuenta2").innerHTML);
     tomarTotal.innerHTML = tomarCuentas;
 }
-
+//eleccion de tarjeta de credito
 document.getElementById("tarjetacredito").addEventListener("change", function() {
 
     let barra = document.getElementById("elegirPago");
@@ -122,6 +106,7 @@ document.getElementById("tarjetacredito").addEventListener("change", function() 
     barra.innerHTML = `<button type="button" class="m-1 btn btn-primary" data-toggle="modal" data-target="#contidionsModal2">Cambiar metodo de pago</button>`;
 
 });
+//eleccion de cuenta bancaria
 document.getElementById("cuentabancaria").addEventListener("change", function() {
 
     let barra = document.getElementById("elegirPago");
@@ -130,34 +115,35 @@ document.getElementById("cuentabancaria").addEventListener("change", function() 
     barra.innerHTML = `<button type="button" class="m-1 btn btn-primary" data-toggle="modal" data-target="#contidionsModal2">Cambiar metodo de pago</button>`;
 
 });
-
+//simulacion de compra
 form.onsubmit = function(evento) {
 
-    evento.preventDefault();
+        evento.preventDefault();
 
-    if (document.getElementById("textoelegir").innerHTML === "Elegiste pagar con tarjeta de credito") {
+        if (document.getElementById("textoelegir").innerHTML === "Elegiste pagar con tarjeta de credito") {
 
-        window.location = "cart.html";
+            window.location = "cart.html";
 
-    } else if (document.getElementById("textoelegir").innerHTML === "Elegiste pagar con cuenta bancaria") {
+        } else if (document.getElementById("textoelegir").innerHTML === "Elegiste pagar con cuenta bancaria") {
 
-        window.location = "cart.html";
+            window.location = "cart.html";
 
-    } else {
-        alert("Debes elegir forma de pago");
+        } else {
+            alert("Debes elegir forma de pago");
+        }
+
     }
-
-}
-
+    //calcula el precio de cantidad por unidad en base al contador del auto
 function cantidadAuto() {
 
     let dato = parseFloat(document.getElementById("costoAuto").innerHTML);
     numero = document.getElementById("contador").value;
     let cuenta = dato * numero;
     document.getElementById("cambiar").innerHTML = cuenta + "USD";
-    ver();
+    colocarSubtotal();
 }
 
+//calcula el precio de cantidad por unidad en base al contador del pino
 function cantidadPino() {
 
     let dato = parseFloat(document.getElementById("costoPino").innerHTML);
@@ -165,19 +151,19 @@ function cantidadPino() {
     numero = document.getElementById("contador2").value;
     let cuenta = dato * numero;
     document.getElementById("cambiar2").innerHTML = cuenta + "USD";
-    ver();
+    colocarSubtotal();
 
 
 }
 
+//suma los valores para el subtotal
+function colocarSubtotal() {
 
-function ver() {
+    let suma = 0;
 
+    suma += parseFloat(document.getElementById("cambiar").innerHTML);
+    suma += parseFloat(document.getElementById("cambiar2").innerHTML);
 
-
-    let precioauto = parseFloat(document.getElementById("cambiar2").innerHTML);
-    let preciopino = parseFloat(document.getElementById("cambiar").innerHTML);
-    let suma = precioauto + preciopino;
 
     return document.getElementById("cuenta").innerHTML = suma;
 
