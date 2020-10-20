@@ -1,6 +1,6 @@
 var informa = [];
 let listaPrueba = 0;
-let numero = 0;
+
 
 
 function mostrar(array) {
@@ -11,8 +11,7 @@ function mostrar(array) {
         let productos = array[i];
         let indice = i;
 
-        numero = productos.count;
-        let precioCantidad = productos.unitCost * numero;
+        let precioCantidad = productos.unitCost * productos.count;
 
 
         if (productos.currency === "USD") {
@@ -21,8 +20,8 @@ function mostrar(array) {
             <tr>
                 <td><img src=${productos.src}></td>
                 <td>${productos.name}</td>
-                <td id="costoAuto">${productos.unitCost}USD</td>
-                <td><input type="number" class="form-control" id="contador" onchange="cantidadAuto()" placeholder="" value=${numero} min="0"></td>
+                <td>${productos.unitCost}USD</td>
+                <td><input type="number" class="form-control" id="contador" onchange="cantidadAuto(this.value,${productos.unitCost},${indice})" placeholder="" value=${productos.count} min="0"></td>
                 <td id="cambiar">${precioCantidad}USD</td>
                 <td><button class="btn btn-danger" onclick="borrarTabla(${indice})">Borrar</button></td>
             </tr>
@@ -33,8 +32,8 @@ function mostrar(array) {
             <tr>
                 <td><img src=${productos.src}></td>
                 <td>${productos.name}</td>
-                <td id="costoPino">${productos.unitCost/40}USD</td>
-                <td><input type="number" class="form-control" id="contador2" onchange="cantidadPino()" placeholder="" value=${numero} min="0"></td>
+                <td>${productos.unitCost/40}USD</td>
+                <td><input type="number" class="form-control" id="contador2" onchange="cantidadPino(this.value,${productos.unitCost},${indice})" placeholder="" value=${productos.count} min="0"></td>
                 <td id="cambiar2">${precioCantidad/40}USD</td>
                 <td><button class="btn btn-danger" onclick="borrarTabla(${indice})">Borrar</button></td>
             </tr>
@@ -134,40 +133,28 @@ form.onsubmit = function(evento) {
 
     }
     //calcula el precio de cantidad por unidad en base al contador del auto
-function cantidadAuto() {
+function cantidadAuto(valor, precio, indice) {
 
-    let dato = parseFloat(document.getElementById("costoAuto").innerHTML);
-    numero = document.getElementById("contador").value;
+    let dato = precio;
+    let numero = informa["articles"][indice].count = valor;
     let cuenta = dato * numero;
     document.getElementById("cambiar").innerHTML = cuenta + "USD";
-    colocarSubtotal();
+    mostrar(informa["articles"]);
 }
 
 //calcula el precio de cantidad por unidad en base al contador del pino
-function cantidadPino() {
+function cantidadPino(valor, precio, indice) {
 
-    let dato = parseFloat(document.getElementById("costoPino").innerHTML);
+    let dato = precio / 40;
 
-    numero = document.getElementById("contador2").value;
+    let numero = informa["articles"][indice].count = valor;
     let cuenta = dato * numero;
     document.getElementById("cambiar2").innerHTML = cuenta + "USD";
-    colocarSubtotal();
+    mostrar(informa["articles"]);
 
 
 }
 
-//suma los valores para el subtotal
-function colocarSubtotal() {
-
-    let suma = 0;
-
-    suma += parseFloat(document.getElementById("cambiar").innerHTML);
-    suma += parseFloat(document.getElementById("cambiar2").innerHTML);
-
-
-    return document.getElementById("cuenta").innerHTML = suma;
-
-}
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -181,6 +168,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
             mostrar(informa["articles"]);
 
             document.getElementById("alerta").innerHTML = informa["articles"].length;
+
+
         }
     });
 
