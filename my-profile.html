@@ -51,12 +51,19 @@
         </div>
     </nav>
     <div class="container p-5">
-        <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-            <h4 class="alert-heading">¡A trabajar! :)</h4>
-            <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-            <hr>
-            <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-        </div>
+        <form id="form" method="POST">
+            <input type="text" id="nombretomado" required="">
+            <label for="nombretomado">Nombre</label>
+            <input type="number" id="edadtomada" required="">
+            <label for="edadtomada">Edad</label>
+            <input type="email" id="emailtomado" required="">
+            <label for="emailtomado">Email</label>
+            <input type="text" id="direcciontomada" required="">
+            <label for="direcciontomada">Dirección</label>
+            <input type="submit">
+            <button>ver</button>
+            <span id="prueba"></span>
+        </form>
     </div>
     <footer class="text-muted bg-light">
         <div class="container">
@@ -82,6 +89,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/dropzone.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/my-profile.js"></script>
 </body>
 
