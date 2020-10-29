@@ -48,22 +48,23 @@ function mostrarproductos() {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(productos.soldCount) <= maxCount))) {
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + productos.imgSrc + `" alt="` + productos.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h3 class="mb-1">` + productos.name + `</h3>
-                            <h5 class="text-muted">` + productos.soldCount + ` artículos</h5>
+            <div class="col-md-4">
+                <div class="card-mb-4 shadow-lg">
+                    <img src=` + productos.imgSrc + ` class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">` + productos.name + `</h5>
+                            <p class="card-text">` + productos.description + `</p>
+                            <p class="card-text">Precio:` + productos.cost + productos.currency + `</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                    <div class"btn-group">
+                                        <a href="product-info.html"><button type="button" class="btn btn-lg btn-outline-primary">Ver</button></a>                        
+                                    </div>
+                                    <p class="text-muted">Vendidos:` + productos.soldCount + `</p>
+                             </div>
                         </div>
-                        <h4 class="mb-1">` + productos.description + `</h4>
-                        <br><br><br>
-                        <h4 class="mb-1">Precio:&nbsp` + productos.cost + productos.currency + `</h4>
-                    </div>
                 </div>
-            </a>
+            </div>
+    
             `
         }
 
@@ -81,22 +82,22 @@ function mostrarfiltros() {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(productos.cost) <= maxCount))) {
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + productos.imgSrc + `" alt="` + productos.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h3 class="mb-1">` + productos.name + `</h3>
-                            <h5 class="text-muted">` + productos.soldCount + ` artículos</h5>
+            <div class="col-md-4">
+                <div class="card-mb-4 shadow-lg">
+                    <img src=` + productos.imgSrc + ` class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">` + productos.name + `</h5>
+                            <p class="card-text">` + productos.description + `</p>
+                            <p class="card-text">Precio:` + productos.cost + productos.currency + `</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                    <div class"btn-group">
+                                        <a href="product-info.html"><button type="button" class="btn btn-lg btn-outline-primary">Ver</button></a>                        
+                                    </div>
+                                    <p class="text-muted">Vendidos:` + productos.soldCount + `</p>
+                             </div>
                         </div>
-                        <h4 class="mb-1">` + productos.description + `</h4>
-                        <br><br><br>
-                        <h4 class="mb-1">Precio:&nbsp` + productos.cost + productos.currency + `</h4>
-                    </div>
                 </div>
-            </a>
+            </div>
             `
         }
 

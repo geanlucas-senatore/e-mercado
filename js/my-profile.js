@@ -20,7 +20,7 @@ function mostrarInformacion() {
             document.getElementById("nombretomado").value = info.nombre;
             document.getElementById("edadtomada").value = info.edad;
             document.getElementById("emailtomado").value = info.email;
-            document.getElementById("direcciontomada").value = info.direccion;
+            document.getElementById("contactotomado").value = info.contacto;
 
         }
     }
@@ -33,9 +33,9 @@ form.onsubmit = function(evento) {
     let nombreToma = document.getElementById("nombretomado").value;
     let edadToma = document.getElementById("edadtomada").value;
     let mailToma = document.getElementById("emailtomado").value;
-    let dirToma = document.getElementById("direcciontomada").value;
+    let contactoToma = document.getElementById("contactotomado").value;
 
-    let guardarJson = JSON.stringify([{ usuario: nombreGuardado, nombre: nombreToma, edad: edadToma, email: mailToma, direccion: dirToma }]);
+    let guardarJson = JSON.stringify([{ usuario: nombreGuardado, nombre: nombreToma, edad: edadToma, email: mailToma, contacto: contactoToma }]);
 
     localStorage.setItem(nombreGuardado, guardarJson);
 
@@ -58,5 +58,5 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
     });
     mostrarInformacion();
-    //localStorage.removeItem("informacion");
+    //localStorage.removeItem("lucas");
 });
