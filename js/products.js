@@ -49,7 +49,7 @@ function mostrarproductos() {
 
             htmlContentToAppend += `
             <div class="col-md-4">
-                <div class="card-mb-4 shadow-lg">
+                <div class="card mb-4 shadow-lg">
                     <img src=` + productos.imgSrc + ` class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">` + productos.name + `</h5>
@@ -83,7 +83,7 @@ function mostrarfiltros() {
 
             htmlContentToAppend += `
             <div class="col-md-4">
-                <div class="card-mb-4 shadow-lg">
+                <div class="card mb-4">
                     <img src=` + productos.imgSrc + ` class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">` + productos.name + `</h5>
